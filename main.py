@@ -9,6 +9,11 @@ import os
 
 WORD = "petrichor"
 
+# The gate requires 1-24 UTF-8 characters, not only white space, and the
+# competition requires exactly one word: enforce both here so a bad edit
+# can never ship an invalid entry.
+assert 1 <= len(WORD) <= 24 and WORD.strip() == WORD and " " not in WORD
+
 OUTPUT_PATH = os.environ.get("OUTPUT_PATH", "/output/entry.txt")
 
 
